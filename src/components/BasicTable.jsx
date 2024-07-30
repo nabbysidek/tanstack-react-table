@@ -5,6 +5,7 @@ import {
 } from "@tanstack/react-table";
 import mData from "../MOCK_DATA.json";
 import { useMemo } from "react";
+import { DateTime } from "luxon";
 
 function BasicTable() {
   // create instance of our data next
@@ -42,6 +43,8 @@ function BasicTable() {
       header: "Date of Birth",
       accessorKey: "dob",
       footer: "Date of Birth",
+      cell: info => 
+        DateTime.fromISO(info.getValue()).toLocaleString(DateTime.DATE_MED),
     },
   ];
 
